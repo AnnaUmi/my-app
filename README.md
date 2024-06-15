@@ -1,11 +1,10 @@
-
-
 # Getting Started with React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 To install the project, you need to have Node.js installed on your machine. You can download it from [here](https://nodejs.org/en/download/).
-In the project directory, you can run:
+
+To install the project in the project directory, you can run:
 
 ### `npm install`
 
