@@ -1,23 +1,11 @@
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { Container, List } from '@mantine/core';
 import Loader from '../components/Loader';
 import { Post } from '../__generated__/resolvers-types';
 import { Link } from 'react-router-dom';
 import labels from '../ulitls/labels';
+import { GET_POSTS } from '../apollo/queries';
 
-const GET_POSTS = gql`
-  query ($options: PageQueryOptions) {
-    posts(options: $options) {
-      data {
-        id
-        title
-      }
-      meta {
-        totalCount
-      }
-    }
-  }
-`;
 const Posts = () => {
   const { loading, error, data } = useQuery(GET_POSTS);
 
