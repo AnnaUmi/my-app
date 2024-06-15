@@ -30,9 +30,17 @@ const PostForm = ({ post, updatePost, id }: Props) => {
       title: post?.title ?? '',
       body: post?.body ?? '',
     },
+    validateInputOnChange: true,
+    validate: {
+      title: (value) =>
+        value.length < 2 ? 'Title must have at least 2 letters' : null,
+      body: (value) =>
+        value.length < 2 ? 'Body must have at least 2 letters' : null,
+    },
   });
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    if (isEdit) {
+    if (isEdit && !form.errors.title && !form.errors.body) {
       e.preventDefault();
       form.reset();
       updatePost({ variables: { input: form.values, id } });
@@ -48,7 +56,10 @@ const PostForm = ({ post, updatePost, id }: Props) => {
       <form onClick={() => setIsEdit(true)} onMouseLeave={onSubmit}>
         <Stack gap="md">
           {isEdit ? (
-            <TextInput {...form.getInputProps('title')} />
+            <TextInput
+              {...form.getInputProps('title')}
+              key={form.key('title')}
+            />
           ) : (
             <Title>{post?.title}</Title>
           )}
