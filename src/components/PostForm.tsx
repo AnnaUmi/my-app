@@ -9,11 +9,16 @@ import {
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Post } from '../__generated__/resolvers-types';
+import { Post, UpdatePostInput } from '../__generated__/resolvers-types';
+
+type UpdatePostArgs = {
+  input: UpdatePostInput;
+  id: string;
+};
 
 type Props = {
   post: Post;
-  updatePost: (args: any) => void;
+  updatePost: (args: { variables: UpdatePostArgs }) => void;
   id: string;
 };
 
