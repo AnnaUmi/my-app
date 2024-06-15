@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
 import { useMutation, useQuery } from '@apollo/client';
 import PostForm from '../components/PostForm';
-import Loader from '../components/Loader';
+import Loader from '../components/core/Loader';
 import { GET_POST, UPDATE_POST } from '../apollo/queries';
 import labels from "../ulitls/labels";
 
