@@ -3,6 +3,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import PostForm from '../components/PostForm';
 import Loader from '../components/Loader';
 import { GET_POST, UPDATE_POST } from '../apollo/queries';
+import labels from "../ulitls/labels";
 
 const Post = () => {
   const { id } = useParams();
@@ -15,7 +16,7 @@ const Post = () => {
   const { post } = data ?? {};
 
   if (loading) return <Loader />;
-  if (error) return <p>Error</p>;
+  if (error) return <p>{labels.ERROR}</p>;
 
   return <PostForm post={post} updatePost={updatePost} id={id || ''} />;
 };

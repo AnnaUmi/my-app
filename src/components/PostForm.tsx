@@ -10,6 +10,7 @@ import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Post, UpdatePostInput } from '../__generated__/resolvers-types';
+import labels from '../ulitls/labels';
 
 type UpdatePostArgs = {
   input: UpdatePostInput;
@@ -32,10 +33,8 @@ const PostForm = ({ post, updatePost, id }: Props) => {
     },
     validateInputOnChange: true,
     validate: {
-      title: (value) =>
-        value.length < 2 ? 'Title must have at least 2 letters' : null,
-      body: (value) =>
-        value.length < 2 ? 'Body must have at least 2 letters' : null,
+      title: (value) => (value.length < 2 ? labels.VALIDATION_ERROR : null),
+      body: (value) => (value.length < 2 ? labels.VALIDATION_ERROR : null),
     },
   });
 
